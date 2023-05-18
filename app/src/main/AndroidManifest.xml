@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Tamataa"
         tools:targetApi="31">
         <activity
+            android:name=".GameSampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".CardsGame"
             android:exported="false" />
         <activity

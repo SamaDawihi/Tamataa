@@ -8,66 +8,84 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Major extends AppCompatActivity {
 
-    Map<String , Button> gameBtn;
+    MajorModel major;
+    String majorAraName, majorEngName, majorDescription;
 
-    Intent goToGame;
-    int majorId;
+    MajorsDBController controller;
+    List<GameIdModel> availableGames;
+
+    Intent goToCardsGame;
+    List<Button> gameBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_major);
 
-        setMajorId();
-        gameBtn = new HashMap<>();
+        setMajor();
+
+        controller = new MajorsDBController(this);
+
+        gameBtn = new ArrayList<>();
 
         setGames();
 
     }
 
-    private void setMajorId() {
+    private void setMajor() {
 
         Intent intent = getIntent();
 
         // Retrieve the extra value using the key
-        majorId = intent.getIntExtra("majorId", -1);
+        majorAraName = intent.getStringExtra("majorName");
+        majorEngName = intent.getStringExtra("majorEngName");
+        majorDescription = intent.getStringExtra("majorDescription");
 
-        Toast.makeText(this, "majorId = " + majorId, Toast.LENGTH_SHORT).show();
+        major = new MajorModel(majorEngName, majorAraName, majorDescription);
 
-        TextView majorName = findViewById(R.id.majorNameTV);
+        Toast.makeText(this, "majorName = " + majorAraName, Toast.LENGTH_SHORT).show();
 
-        switch (majorId){
-            case 1:
-                majorName.setText("حاسب");
-                break;
-            case 2:
-                majorName.setText("تسويق");
-                break;
-            default:
-                majorName.setText("اختيار خاطئ");
+        TextView majorNameTV = findViewById(R.id.majorNameTV);
 
-        }
+        majorNameTV.setText(majorAraName);
     }
 
 
     private void setGames() {
-        if (majorId == 2){
-            gameBtn.put("cardsGame", findViewById(R.id.cardsgameBtn)); //for now is 1
-            gameBtn.get("cardsGame").setOnClickListener(v -> goToGame(1));
+        availableGames = controller.getAllGameIdsByMajor(majorEngName);
 
-        }
+        gameBtn.add(findViewById(R.id.game1));
+        gameBtn.add(findViewById(R.id.game2));
+        gameBtn.add(findViewById(R.id.game3));
+        gameBtn.get(0).setText("SIZE IS " + availableGames.size());
+
+        goToCardsGame = new Intent(this, CardsGame.class);
+
+        //if (gameBtn.size() <= availableGames.size()) {
+        //must be based on real btns
+            for (int i = 0; i < availableGames.size(); i++) {
+                GameIdModel gameId = availableGames.get(i);
+                Button cardButton = gameBtn.get(i);
+                cardButton.setText(gameId.getName());
+                cardButton.setOnClickListener(v -> goToGame(gameId));
+            }
+        //}
 
     }
 
-    private void goToGame(int gameId) {
-        if(gameId == 1) {//cardsGame
-            goToGame = new Intent(this, CardsGame.class);
-            startActivity(goToGame);
+    private void goToGame(GameIdModel gameId) {
+        if(gameId.getGameTypeId() == 1) {//cardsGame
+            goToCardsGame = new Intent(this, CardsGame.class);
+            goToCardsGame.putExtra("gameId", gameId.getGameId());//marketing phrase game
+            startActivity(goToCardsGame);
         }
 
 
