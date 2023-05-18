@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="45dp"
+
+
+    android:layout_gravity="right"
+    android:gravity="right"
+    tools:context=".Major">
+
+    <TextView
+        android:id="@+id/majorNameTV"
+        android:layout_margin="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="اسم التخصص"
+        android:textSize="50dp"/>
+
+    <TextView
+        android:layout_marginRight="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="العاب"
+        android:textSize="25dp"/>
+
+    <LinearLayout
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/game3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تحدي 3"
+            android:textSize="22dp"
+            android:layout_margin="5dp"
+            />
+        <Button
+            android:id="@+id/game2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تحدي 2"
+            android:textSize="22dp"
+            android:layout_margin="5dp"
+            />
+        <Button
+            android:id="@+id/game1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تحدي 1"
+            android:textSize="22dp"
+            android:layout_margin="5dp"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginRight="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="درب نفسك"
+        android:textSize="25dp"/>
+
+    <LinearLayout
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/Tutorial1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تدريب 1"
+            android:textSize="22dp"
+            android:layout_margin="5dp"
+            />
+        <Button
+            android:id="@+id/Tutorial2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تدريب 2"
+            android:textSize="22dp"
+            android:layout_margin="5dp"
+            />
+        <Button
+            android:id="@+id/Tutorial3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تدريب 3"
+            android:textSize="22dp"
+            android:layout_margin="5dp"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>
