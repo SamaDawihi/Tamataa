@@ -8,12 +8,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Major extends AppCompatActivity {
 
     Map<String , Button> gameBtn;
 
+    Intent goToGame;
     int majorId;
 
     @Override
@@ -22,6 +24,7 @@ public class Major extends AppCompatActivity {
         setContentView(R.layout.activity_major);
 
         setMajorId();
+        gameBtn = new HashMap<>();
 
         setGames();
 
@@ -54,9 +57,19 @@ public class Major extends AppCompatActivity {
 
     private void setGames() {
         if (majorId == 2){
-            gameBtn.put("cardGame", findViewById(R.id.game1));
+            gameBtn.put("cardsGame", findViewById(R.id.cardsgameBtn)); //for now is 1
+            gameBtn.get("cardsGame").setOnClickListener(v -> goToGame(1));
 
         }
+
+    }
+
+    private void goToGame(int gameId) {
+        if(gameId == 1) {//cardsGame
+            goToGame = new Intent(this, CardsGame.class);
+            startActivity(goToGame);
+        }
+
 
     }
 
