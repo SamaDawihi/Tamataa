@@ -12,35 +12,36 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="153dp"
+        android:layout_gravity="center"
         android:layout_margin="0dp"
         android:layout_marginBottom="10dp"
-        android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_gravity="center"
+        android:background="@drawable/imageOfTop"
         android:gravity="bottom"
-        android:background="@drawable/ImageOfTopGame" >
+        android:orientation="horizontal"
+        android:padding="10dp">
+
         <TextView
             android:id="@+id/playerNameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:fontFamily="@font/el_messiri"
+            android:text="Player1"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/el_messiri"
-            android:text="Player1"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/scoreTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:fontFamily="@font/el_messiri"
+            android:text="PlayerScore = 0"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:fontFamily="@font/el_messiri"
-            android:textStyle="bold"
-            android:text="PlayerScore = 0"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/timerTV"
@@ -113,7 +114,7 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
 
-        android:background="@drawable/main_background"
+        android:background="@drawable/phraseBG"
         android:fontFamily="@font/el_messiri"
         android:gravity="center"
         android:text="العبارة التسويقية"
@@ -137,7 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/brand13"
-                    android:background="@drawable/image (2).png"
+                    android:background="@drawable/cardButton"
                     android:text="brand13"/>
                 <Button
                     android:layout_margin="3dp"
