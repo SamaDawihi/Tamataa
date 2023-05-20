@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Majors extends AppCompatActivity {
@@ -44,7 +43,7 @@ public class Majors extends AppCompatActivity {
         majorBtn.add(findViewById(R.id.major8));
         majorBtn.add(findViewById(R.id.major9));
 
-        goToMajor = new Intent(this, Major.class);
+        goToMajor = new Intent(this, MajorActivity.class);
 
         if (majorBtn.size() <= majors.size()) {
             for (int i = 0; i < majorBtn.size(); i++) {

@@ -9,11 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class Major extends AppCompatActivity {
+public class MajorActivity extends AppCompatActivity {
 
     MajorModel major;
     String majorAraName, majorEngName, majorDescription;
@@ -67,7 +65,7 @@ public class Major extends AppCompatActivity {
         gameBtn.add(findViewById(R.id.game3));
         gameBtn.get(0).setText("SIZE IS " + availableGames.size());
 
-        goToCardsGame = new Intent(this, CardsGame.class);
+        goToCardsGame = new Intent(this, CardsGameActivity.class);
 
         //if (gameBtn.size() <= availableGames.size()) {
         //must be based on real btns
@@ -83,7 +81,7 @@ public class Major extends AppCompatActivity {
 
     private void goToGame(GameIdModel gameId) {
         if(gameId.getGameTypeId() == 1) {//cardsGame
-            goToCardsGame = new Intent(this, CardsGame.class);
+            goToCardsGame = new Intent(this, CardsGameActivity.class);
             goToCardsGame.putExtra("gameId", gameId.getGameId());//marketing phrase game
             startActivity(goToCardsGame);
         }

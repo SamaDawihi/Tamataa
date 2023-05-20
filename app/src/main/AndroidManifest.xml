@@ -15,10 +15,10 @@
             android:name=".GameSampleActivity"
             android:exported="false" />
         <activity
-            android:name=".CardsGame"
+            android:name=".CardsGameActivity"
             android:exported="false" />
         <activity
-            android:name=".Major"
+            android:name=".MajorActivity"
             android:exported="false" />
         <activity
             android:name=".Majors"
@@ -32,6 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

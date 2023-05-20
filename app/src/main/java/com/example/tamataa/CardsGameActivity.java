@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class CardsGame extends AppCompatActivity {
+public class CardsGameActivity extends AppCompatActivity {
 
     //gameInfo
     int gameId;
@@ -29,7 +29,7 @@ public class CardsGame extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private long timeLeftInMillis = 60000; // 1 minute in milliseconds
 
-    Button nextBtn;
+    Button nextBtn, startBtn, endBtn;
     List<Button> cards;
     List<PhraseModel> phrases;
     List<CategoryModel> brands;
@@ -54,8 +54,6 @@ public class CardsGame extends AppCompatActivity {
 
         startGame();
 
-        nextBtn = findViewById(R.id.nextBtn);
-        nextBtn.setOnClickListener(v -> nextPhrase());
     }
 
     private void setGameId() {
@@ -82,6 +80,7 @@ public class CardsGame extends AppCompatActivity {
             public void onFinish() {
                 // Timer finished, handle it here
                 timerTV.setText("0:00");
+                nextPhrase();
             }
         };
 
@@ -97,6 +96,13 @@ public class CardsGame extends AppCompatActivity {
     }
 
     private void initiateCards() {
+        nextBtn = findViewById(R.id.nextBtn);
+        nextBtn.setOnClickListener(v -> nextPhrase());
+        startBtn = findViewById(R.id.startBtn);
+        startBtn.setOnClickListener(v -> startGame());
+        endBtn = findViewById(R.id.endBtn);
+        endBtn.setOnClickListener(v -> endGame());
+
         brands = controller.getAllCategories(gameId);
         cards.add(findViewById(R.id.brand11));
         cards.add(findViewById(R.id.brand12));
@@ -116,7 +122,6 @@ public class CardsGame extends AppCompatActivity {
                 cardButton.setOnClickListener(v -> setTheListener(brand));
             }
         }
-
     }
 
     private void setTheListener(CategoryModel brand) {
@@ -167,6 +172,9 @@ public class CardsGame extends AppCompatActivity {
 
         phrases = controller.getAllPhrases(gameId);
         setPhrase();
+
+        startBtn.setEnabled(false);
+        endBtn.setEnabled(true);
     }
     private void nextPhrase() {
         setPhrase();
@@ -174,21 +182,30 @@ public class CardsGame extends AppCompatActivity {
         for (Button cardButton : cards) {
             cardButton.setEnabled(true);
         }
-
+        countDownTimer.start();
+        updateTimer();
     }
     private void endGame() {
+        startBtn.setEnabled(true);
+        endBtn.setEnabled(false);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Score");
-        builder.setMessage("Your score is: " + score);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setTitle("النتيجة");
+        builder.setMessage("نتيجتك هي: " + score);
+        builder.setPositiveButton("حسنا", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
+        builder.setNeutralButton("المحاولة مرة اخرى", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-// Create and show the AlertDialog
+            }
+        });
+
+        // Create and show the AlertDialog
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }

@@ -1,3 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Tamataa</string>
+	<!-- iphone_8_plus___10 strings -->
+
+	<string name="app_name">Page 1</string>
+	<string name="ek_img_content">ExportKit Image</string>
+	<string name="time_string">9:41</string>
+	<string name="________string"></string>
+	<string name="_________string"></string>
+	<string name="_________ek1_string"></string>
 </resources>
