@@ -137,6 +137,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/brand13"
+                    android:background="@drawable/image (2).png"
                     android:text="brand13"/>
                 <Button
                     android:layout_margin="3dp"
